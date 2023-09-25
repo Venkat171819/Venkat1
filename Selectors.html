@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors</title>
+    <style>
+        /* [title]{
+            border-radius: 20px;
+        } */
+        /* [title="musk"]{
+            border: 1px solid red;
+            padding: 10px;
+        }
+        [height="250px"]{
+            background-color: green;
+            width: 400px;
+        }
+        [alt^="image"]{
+            background-color: yellow;
+            border: 4px solid pink;
+            padding: 10px;
+        }
+        [title|="davi"]{
+            border: 1px solid green;
+            padding: 10px;
+        } */
+        [title$="sk"]{
+            border: 2px solid red;
+        }
+        [title*="vi"]{
+            border: 2px dotted red;
+        }
+
+    </style>
+</head>
+<body>
+           <img src="../Images/Musk.jpg" alt="imagemusk" title="musk" height="250px" width="200px">
+           <img src="../Images/Edison.jpg" alt="imageedison" title="ediss-om" height="200px" width="200px">
+           <img src="../Images/Davinci.jpg" alt="dav" title="davi-nci" height="100px" width="100px">
+
+</body>
+</html>
