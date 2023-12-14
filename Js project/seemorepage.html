@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <script>
+       var aap= JSON.parse(localStorage.getItem("seemore"));
+       
+
+       var title=document.createElement("h4");
+       title.innerText=aap["title"];
+       document.body.appendChild(title);
+
+       //var image=document.createElement("img");
+       
+
+       var img=document.createElement("img");
+        img.style.width="200px";
+        img.style.height="200px";
+        img.setAttribute("src",aap["image"]);
+        
+       document.body.appendChild(img);
+
+
+       var butto=document.createElement("button");
+       butto.innerText="go back"
+       document.body.appendChild(butto);
+       butto.addEventListener("click", ()=>{
+        //window.location.href = "./carddisplay.html";
+        window.history.back();
+       })
+
+
+
+       
+
+
+
+    </script>
+    
+</body>
+</html>

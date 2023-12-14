@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form register page</title>
+</head>
+ <style>
+    
+
+    div{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    form{
+        width: 300px;
+        height: 300px;
+        border: 1px solid black;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+  
+
+
+</style> 
+
+<body>
+    <div id="main">
+    <form >
+        <div>
+            <label>UserName:</label>
+            <input type="text" name="username" id="username" placeholder="Username" required>
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="email" name="mail" id="email" placeholder="Give your mail id" required>
+        </div>
+        <div>
+            <label>MobileNumber:</label>
+            <input type="number" name="mobile" id="mobile" placeholder="Give your mobile number" required>
+    
+        </div>
+        <div>
+            <label>Password:</label>
+        <input type="password" name="password" id="password" placeholder="Enter your password" required>
+        </div>
+        <div>
+            <label>ConfirmPassword:</label>
+            <input type="password" name="password" id="password2" placeholder="Re-enter your password" required>
+        </div>
+        <input type="submit" value="SUBMIT">
+    </form>
+</div>
+    
+</body>
+    <script>
+        var array=[]
+
+        let form=document.forms;
+        form[0].addEventListener("submit",(event)=>{
+            event.preventDefault;
+
+            let user=event.target[0].value;
+            let mail=event.target[1].value;
+            let mobile=event.target[2].value;
+            let pass1=event.target[3].value;
+            let pass2=event.target[4].value;
+
+           
+            var t1=/^[a-zA-Z]/gi
+            if(t1.test(user)){
+                var t2=/^[a-zA-Z0-9._]+@gmail.com$/
+                if(t2.test(mail)){
+                    var t3=/^[6-9]\d{9}$/
+                    if(t3.test(mobile)){
+                        var t4=/^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&()-_=+{};:,<.>])(?!.\s).{8,}$/
+                        if(t4.test(pass1)){
+                            if(pass1===pass2){
+
+                                let object={
+                                    name:user,
+                                    gmail:mail,
+                                    num:mobile,
+                                    password1:pass1,
+                                    password2:pass2
+
+                                }
+                                array.push(object)
+                                localStorage.setItem("login",JSON.stringify(array))
+                                window.open("./FORMS Login.html")
+                                
+                            }
+                            else{
+                                alert("Your password didn't match ")
+                            }
+                        }
+                        else{
+                        alert("Your password at least 8 characters and combination of number charcaters special letters")
+                        }
+                    }
+                    else{
+                    alert("Give valid Mobile number")
+                    }
+                }
+                else{
+                alert("Give proper G-Mail")
+                }
+            }
+            else{
+                alert("Please give valid username")
+            }
+
+
+
+          
+            // window.location.assign("./FORMS Login.html")
+            
+        })
+    </script>
+</html>

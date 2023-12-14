@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        #main{
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            background-color: aliceblue;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+        }
+      
+        #main div {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+        #main label {
+            margin-bottom: 5px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div id="main">
+        <form>
+            <div>
+                <label for="Uname">Username:</label>
+                <input type="text" placeholder="Username">
+            </div>
+
+            <div>
+                <label for="gmail">Gmail:</label>
+                <input type="email" placeholder="Mail" required>
+            </div>
+
+            <div>
+                <label for="Mobilenumber">Mobile:</label>
+                <input type="tel" placeholder="Mobile" required>
+            </div>
+
+            <div>
+                <label for="Pssd">Password:</label>
+                <input type="password" placeholder="Password" required>
+            </div>
+
+            <div>
+                <label for="cpssd">Confirm Password:</label>
+                <input type="password" placeholder="confirm password" required>
+            </div>
+
+            <div>
+                <input type="submit" value="submit">
+            </div>
+          <div class="x">
+            <label for="Interview">Interview</label>
+            <input type="text" placeholder="enter compnay" >
+          </div>
+        </form>
+    </div>
+
+    
+   <script>
+    let form = document.forms;
+    //console.log(form[0]);
+    let arr = [];
+    form[0].addEventListener("submit", (ele) => {
+       ele.preventDefault();
+        let user_name = ele.target[0].value;
+        let g_mail = ele.target[1].value;
+        let mobile_number = ele.target[2].value;
+        let Pass_word = ele.target[3].value;
+        let cnf_password = ele.target[4].value;
+        var a = /^[a-zA-Z]/;
+        if (a.test(user_name)) {
+            var b = /^[a-zA-Z0-9._]+@gmail.com$/;
+            if (b.test(g_mail)) {
+                var c = /^[6-9]\d{9}$/;
+                if (c.test(mobile_number)) {
+                    // Updated password regex
+                    var d = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+                    if (d.test(Pass_word)) {
+                        if (Pass_word === cnf_password) {
+                            let object = {
+                                username: user_name,
+                                gmail: g_mail,
+                                phone: mobile_number,
+                                password: Pass_word,
+                                cnfpassword: cnf_password
+                            };
+                            arr.push(object);
+                            localStorage.setItem("logindata", JSON.stringify(arr));
+                        } else {
+                            alert("Passwords didn't match");
+                        }
+                    } else {
+                        alert("Password should include at least one character, one digit, and be at least 8 characters long");
+                    }
+                } else {
+                    alert("Only numbers are allowed, and the maximum length is 10");
+                }
+            } else {
+                alert("The email should be in the format 'username@gmail.com'");
+            }
+        } else {
+            alert("Not a valid username");
+        }
+    });
+</script>
+
+</body>
+</html>
+

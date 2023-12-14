@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        border: 1px solid black;
+        margin: 10px auto;
+        width: 50vw;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dev"></div>
+
+    <h2>Hi! this is a cart page!!!!!</h2>
+    <script>
+      //var cartt=[];
+
+      var car = JSON.parse(localStorage.getItem("cart"));
+      var div = document.getElementsByClassName("dev");
+
+      car.map((soloele) => {
+        var solodiv = document.createElement("div");
+
+        var h3 = document.createElement("h3");
+        h3.innerHTML = soloele["title"];
+        solodiv.appendChild(h3);
+
+        var imaa = document.createElement("img");
+        imaa.setAttribute("src", soloele["image"]);
+        imaa.style.width = "100px";
+        solodiv.appendChild(imaa);
+
+        div[0].appendChild(solodiv);
+      });
+    </script>
+  </body>
+</html>
